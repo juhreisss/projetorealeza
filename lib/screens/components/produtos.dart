@@ -46,7 +46,6 @@ class Produtos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Verifica se a imagem é um link da web ou um arquivo local
     bool ehLinkWeb =
         urlImagem.startsWith('http://') ||
         urlImagem.startsWith('https://');

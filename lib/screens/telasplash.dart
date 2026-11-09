@@ -14,7 +14,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     
-    // Aguarda 3 segundos e navega para a tela de Login
     Timer(const Duration(seconds: 3), () {
       if (mounted) {
         Navigator.pushReplacement(

@@ -16,7 +16,6 @@ class _TelaHomeState extends State<TelaHome> {
   List listaProdutos = [];
   bool estaCarregando = true;
 
-  // Cores da identidade visual Releza
   static const Color amarelo = Color(0xFFFFF7AD);
   static const Color rosa = Color(0xFFFFA9F9);
   static const Color roxo = Color(0xFFAD579D);
@@ -29,7 +28,6 @@ class _TelaHomeState extends State<TelaHome> {
     fazerGet();
   }
 
-  // Busca os produtos na API
   void fazerGet() async {
     try {
       final respostaServidor = await http.get(
@@ -61,14 +59,10 @@ class _TelaHomeState extends State<TelaHome> {
     }
   }
 
-  // Corrige o caminho das imagens recebidas da API
   String corrigirCaminhoImagem(String caminho) {
     String nomeImagem = caminho.replaceFirst('./assets/imagens/', '');
 
-    // Corrige o nome do chinelo marrom escuro
-    // if (nomeImagem == 'chinelo_marom_escuro.jpeg') {
-    //   nomeImagem = 'chinelo_marrom_escuro.jpeg';
-    // }
+   
 
     return nomeImagem;
   }
@@ -221,7 +215,6 @@ class _TelaHomeState extends State<TelaHome> {
     );
   }
 
-  // MENSAGEM QUANDO NÃO EXISTEM PRODUTOS
   Widget construirEstadoVazio() {
     return Center(
       child: Column(
@@ -271,7 +264,6 @@ class _TelaHomeState extends State<TelaHome> {
     return Scaffold(
       backgroundColor: fundo,
 
-      // BARRA SUPERIOR
       appBar: AppBar(
         toolbarHeight: 75,
         elevation: 0,
@@ -331,7 +323,6 @@ class _TelaHomeState extends State<TelaHome> {
           ],
         ),
 
-        // BOTÃO DE GESTÃO
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),

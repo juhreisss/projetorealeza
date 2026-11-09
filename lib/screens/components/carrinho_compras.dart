@@ -16,7 +16,6 @@ class ItemCarrinho {
     this.quantidade = 1,
   });
 
-  // Transforma o produto em dados que podem ser armazenados.
   Map<String, dynamic> toJson() {
     return {
       'nome': nome,
@@ -26,7 +25,6 @@ class ItemCarrinho {
     };
   }
 
-  // Recupera o produto salvo.
   factory ItemCarrinho.fromJson(Map<String, dynamic> json) {
     return ItemCarrinho(
       nome: json['nome'] ?? '',
@@ -49,7 +47,6 @@ class CarrinhoCompras extends ChangeNotifier {
   bool carregado = false;
   Future<void>? _inicializacao;
 
-  // Quantidade total de produtos.
   int get quantidadeTotal {
     return produtos.fold(
       0,
@@ -57,7 +54,6 @@ class CarrinhoCompras extends ChangeNotifier {
     );
   }
 
-  // Valor total da compra.
   double get valorTotal {
     return produtos.fold(
       0,
@@ -65,7 +61,6 @@ class CarrinhoCompras extends ChangeNotifier {
     );
   }
 
-  // Inicializa o armazenamento e recupera os produtos salvos.
   Future<void> inicializar() {
     return _inicializacao ??= _carregarProdutos();
   }
@@ -97,7 +92,6 @@ class CarrinhoCompras extends ChangeNotifier {
     }
   }
 
-  // Salva os produtos no armazenamento interno.
   Future<void> _salvarProdutos() async {
     try {
       final preferencias = await SharedPreferences.getInstance();
@@ -113,7 +107,6 @@ class CarrinhoCompras extends ChangeNotifier {
     }
   }
 
-  // Adiciona um produto ao carrinho.
   Future<void> adicionar({
     required String nome,
     required double preco,
@@ -141,7 +134,6 @@ class CarrinhoCompras extends ChangeNotifier {
     await _salvarProdutos();
   }
 
-  // Aumenta a quantidade.
   Future<void> aumentarQuantidade(ItemCarrinho item) async {
     await inicializar();
 
@@ -151,7 +143,6 @@ class CarrinhoCompras extends ChangeNotifier {
     await _salvarProdutos();
   }
 
-  // Diminui a quantidade ou remove o produto.
   Future<void> diminuirQuantidade(ItemCarrinho item) async {
     await inicializar();
 
@@ -165,7 +156,6 @@ class CarrinhoCompras extends ChangeNotifier {
     await _salvarProdutos();
   }
 
-  // Remove um produto.
   Future<void> remover(ItemCarrinho item) async {
     await inicializar();
 

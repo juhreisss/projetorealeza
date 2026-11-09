@@ -94,7 +94,6 @@ class _TelaLoginState extends State<TelaLogin> {
     }
   }
 
-  // MENSAGENS
   void _mostrarMensagem(String mensagem) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -181,7 +180,6 @@ class _TelaLoginState extends State<TelaLogin> {
         width: double.infinity,
         height: double.infinity,
 
-        // GRADIENTE PRINCIPAL AMARELO E ROSA
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
