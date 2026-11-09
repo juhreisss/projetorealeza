@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:projetorealeza/screens/telahome.dart';
 import 'package:projetorealeza/screens/telaperfil.dart';
@@ -15,6 +14,7 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int indexAtual = 0;
 
+
   static const Color amarelo = Color(0xFFFFF7AD);
   static const Color rosa = Color(0xFFFFA9F9);
   static const Color roxo = Color(0xFFAD579D);
@@ -26,18 +26,23 @@ class _NavBarState extends State<NavBar> {
     const TelaPerfil(),
   ];
 
+
   @override
   void initState() {
     super.initState();
 
-    // Carrega os produtos salvos no SharedPreferences
+   
     CarrinhoCompras.instancia.inicializar();
+
+  
   }
 
   void mudarIndex(int novoIndex) {
     setState(() {
       indexAtual = novoIndex;
     });
+
+
   }
 
   @override
@@ -47,9 +52,17 @@ class _NavBarState extends State<NavBar> {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFBFE),
       body: paginas.elementAt(indexAtual),
+
       bottomNavigationBar: AnimatedBuilder(
         animation: carrinho,
         builder: (context, child) {
+
+          // COMPARAÇÃO COM PYTHON:
+          // O builder é uma função que constrói novamente parte da interface
+          // quando ocorre uma alteração no objeto observado.
+          // Podemos relacionar essa ideia às funções e aos callbacks
+          // utilizados em aplicações Python para reagir a mudanças.
+
           return Container(
             decoration: BoxDecoration(
               gradient: const LinearGradient(
@@ -109,6 +122,8 @@ class _NavBarState extends State<NavBar> {
                               ? Icons.shopping_bag_rounded
                               : Icons.shopping_bag_outlined,
                         ),
+
+
                         if (carrinho.quantidadeTotal > 0)
                           Positioned(
                             right: -9,
